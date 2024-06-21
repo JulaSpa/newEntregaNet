@@ -1,0 +1,114 @@
+{
+  "project_info": {
+    "project_number": "942505363209",
+    "firebase_url": "https://entreganetturnos.firebaseio.com",
+    "project_id": "entreganetturnos",
+    "storage_bucket": "entreganetturnos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942505363209:android:63aa1732cd4b3d8a4a75d8",
+        "android_client_info": {
+          "package_name": "com.example.entreganet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942505363209-ecfk8ldjdv3jghelcn85mkcrgd82t2un.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAju4ZWfziAOtQDpTGweJLipv084xXgSLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942505363209-ecfk8ldjdv3jghelcn85mkcrgd82t2un.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942505363209:android:782fc45ffaf5f6014a75d8",
+        "android_client_info": {
+          "package_name": "entreganet.turnos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942505363209-vs572j4lb0clg9e8jptsla55ppcfjddt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "entreganet.turnos",
+            "certificate_hash": "9c676b74f3d125380c97d0f91d3f628eb3dab795"
+          }
+        },
+        {
+          "client_id": "942505363209-ecfk8ldjdv3jghelcn85mkcrgd82t2un.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAju4ZWfziAOtQDpTGweJLipv084xXgSLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942505363209-ecfk8ldjdv3jghelcn85mkcrgd82t2un.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942505363209:android:ae754c1ced5401a0",
+        "android_client_info": {
+          "package_name": "turnos.entreganet.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942505363209-vql9ddq8kemtvcht2ped2puhd37amsd1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "turnos.entreganet.com",
+            "certificate_hash": "9c676b74f3d125380c97d0f91d3f628eb3dab795"
+          }
+        },
+        {
+          "client_id": "942505363209-ecfk8ldjdv3jghelcn85mkcrgd82t2un.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAju4ZWfziAOtQDpTGweJLipv084xXgSLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942505363209-ecfk8ldjdv3jghelcn85mkcrgd82t2un.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
