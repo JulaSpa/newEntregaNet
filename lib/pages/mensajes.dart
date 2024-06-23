@@ -46,7 +46,7 @@ class _Mensajes extends State<Mensajes> {
           ),
         ),
         Scaffold(
-          backgroundColor: Colors.transparent,
+          backgroundColor: const Color.fromARGB(122, 0, 0, 0),
           appBar: AppBar(
             title: Image.asset("lib/images/entreganet-icon4.png"),
             backgroundColor: Colors.blue,

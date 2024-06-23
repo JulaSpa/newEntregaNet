@@ -159,8 +159,8 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Row(
             children: [
               Image.asset("lib/images/entreganet-icon4.png"),
-              SizedBox(width: 10),
-              Text(
+              const SizedBox(width: 10),
+              const Text(
                 'ENTREGANET',
                 style: TextStyle(
                   color: Colors.white,
@@ -175,18 +175,18 @@ class _MyHomePageState extends State<MyHomePage> {
           automaticallyImplyLeading: true,
         ),
         body: DecoratedBox(
-          decoration: BoxDecoration(color: Colors.transparent),
+          decoration: const BoxDecoration(color: Colors.transparent),
           child: RefreshIndicator(
             onRefresh: _handleRefresh,
             child: isLoading
-                ? Center(
+                ? const Center(
                     child: CircularProgressIndicator(),
                   )
                 : FutureBuilder<List<Album>>(
                     future: futureAlbum,
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(
+                        return const Center(
                           child: CircularProgressIndicator(),
                         );
                       } else if (snapshot.hasError) {
@@ -194,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Text('Error: ${snapshot.error}'),
                         );
                       } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                        return Center(
+                        return const Center(
                           child: Text('No data found'),
                         );
                       } else {
@@ -205,7 +205,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             final album = albums[index];
                             return Card(
                               color: Colors.black.withOpacity(0.5),
-                              margin: EdgeInsets.symmetric(
+                              margin: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 20),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -213,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ListTile(
                                     title: Text(
                                       album.entregador,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 25,
                                         color: Colors.white,
                                       ),
@@ -234,17 +234,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
+                                                  const Text(
                                                     "Número CP:",
                                                     style: TextStyle(
                                                       fontSize: 17,
                                                       color: Colors.white,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 5),
+                                                  const SizedBox(height: 5),
                                                   Text(
                                                     album.nrocp,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 15,
                                                       color: Colors.white,
                                                     ),
@@ -257,17 +257,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
+                                                  const Text(
                                                     "Turno:",
                                                     style: TextStyle(
                                                       fontSize: 17,
                                                       color: Colors.white,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 5),
+                                                  const SizedBox(height: 5),
                                                   Text(
                                                     album.turno,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 15,
                                                       color: Colors.white,
                                                     ),
@@ -277,7 +277,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: 15),
+                                        const SizedBox(height: 15),
                                         Row(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -287,17 +287,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
+                                                  const Text(
                                                     "Puerto:",
                                                     style: TextStyle(
                                                       fontSize: 17,
                                                       color: Colors.white,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 5),
+                                                  const SizedBox(height: 5),
                                                   Text(
                                                     album.puerto,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 15,
                                                       color: Colors.white,
                                                     ),
@@ -310,17 +310,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
+                                                  const Text(
                                                     "Titular:",
                                                     style: TextStyle(
                                                       fontSize: 17,
                                                       color: Colors.white,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 5),
+                                                  const SizedBox(height: 5),
                                                   Text(
                                                     album.titular,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 15,
                                                       color: Colors.white,
                                                     ),
@@ -330,7 +330,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: 15),
+                                        const SizedBox(height: 15),
                                         Row(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -340,17 +340,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
+                                                  const Text(
                                                     "Chasis:",
                                                     style: TextStyle(
                                                       fontSize: 17,
                                                       color: Colors.white,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 5),
+                                                  const SizedBox(height: 5),
                                                   Text(
                                                     album.chasis,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 15,
                                                       color: Colors.white,
                                                     ),
@@ -363,17 +363,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
+                                                  const Text(
                                                     "Producto:",
                                                     style: TextStyle(
                                                       fontSize: 17,
                                                       color: Colors.white,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 5),
+                                                  const SizedBox(height: 5),
                                                   Text(
                                                     album.producto,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 15,
                                                       color: Colors.white,
                                                     ),
@@ -383,51 +383,51 @@ class _MyHomePageState extends State<MyHomePage> {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: 15),
+                                        const SizedBox(height: 15),
                                         Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
+                                            const Text(
                                               "Situación:",
                                               style: TextStyle(
                                                 fontSize: 17,
                                                 color: Colors.white,
                                               ),
                                             ),
-                                            SizedBox(height: 5),
+                                            const SizedBox(height: 5),
                                             Text(
                                               album.situacion,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 15,
                                                 color: Colors.white,
                                               ),
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: 15),
+                                        const SizedBox(height: 15),
                                         Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
+                                            const Text(
                                               "Información actual:",
                                               style: TextStyle(
                                                 fontSize: 17,
                                                 color: Colors.white,
                                               ),
                                             ),
-                                            SizedBox(height: 5),
+                                            const SizedBox(height: 5),
                                             Text(
                                               album.analisis,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 15,
                                                 color: Colors.white,
                                               ),
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: 15),
+                                        const SizedBox(height: 15),
                                       ],
                                     ),
                                   ),

@@ -132,37 +132,38 @@ class _Inicio extends State<Inicio> with SingleTickerProviderStateMixin {
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
-          toolbarHeight: 150,
-          automaticallyImplyLeading: false,
+          toolbarHeight: 130,
+          automaticallyImplyLeading: true,
         ),
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const SizedBox(
-                  height:
-                      0), // Ajusta la distancia vertical según tus necesidades
-              Container(
-                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 150),
-                constraints: const BoxConstraints(
-                  minWidth: 0, // Ajusta la altura mínima según tus necesidades
-                ),
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "ENTREGANET",
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 252, 250, 250),
-                        fontSize: 25,
+              FractionallySizedBox(
+                child: Container(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 130),
+                  constraints: const BoxConstraints(
+                    minWidth:
+                        0, // Ajusta la altura mínima según tus necesidades
+                  ),
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "ENTREGANET",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 252, 250, 250),
+                          fontSize: 25,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-              Container(
-                constraints: const BoxConstraints(maxWidth: 1000),
-                child: FractionallySizedBox(
-                  widthFactor: 0.5,
+              FractionallySizedBox(
+                widthFactor: 0.5,
+                child: Container(
+                  constraints: const BoxConstraints(maxWidth: 1000),
                   child: TextField(
                     style: const TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
@@ -182,10 +183,10 @@ class _Inicio extends State<Inicio> with SingleTickerProviderStateMixin {
               ),
 
               const SizedBox(height: 35),
-              Container(
-                constraints: const BoxConstraints(maxWidth: 1000),
-                child: FractionallySizedBox(
-                  widthFactor: 0.5,
+              FractionallySizedBox(
+                widthFactor: 0.5,
+                child: Container(
+                  constraints: const BoxConstraints(maxWidth: 1000),
                   child: TextField(
                     style: const TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
@@ -202,57 +203,61 @@ class _Inicio extends State<Inicio> with SingleTickerProviderStateMixin {
                   ),
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.only(top: 90, bottom: 15),
-                child: SizedBox(
-                  width: 100,
-                  height: 50,
-                  child: ElevatedButton(
-                    //STATUS SIEMPRE 200
+              FractionallySizedBox(
+                child: Container(
+                  padding: const EdgeInsets.only(top: 90, bottom: 15),
+                  child: SizedBox(
+                    width: 100,
+                    height: 50,
+                    child: ElevatedButton(
+                      //STATUS SIEMPRE 200
 
-                    onPressed: () async {
-                      if (myController.text.isEmpty) {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return const AlertDialog(
-                              content:
-                                  Text("Debes ingresar una patente o CUIT"),
-                            );
-                          },
-                        );
-                      } else {
-                        final String patenteCUIT = myController.text;
-                        final String nroCell = nroCel.text;
-                        // Guardar en SharedPreferences
-                        final prefs = await SharedPreferences.getInstance();
-                        await prefs.setString('patenteCUIT', patenteCUIT);
-                        await prefs.setString('nroCell', nroCell);
-                        Navigator.pushNamed(
-                          context,
-                          "/home",
-                        );
-                      }
-                    },
-                    child: const Text("Buscar"),
+                      onPressed: () async {
+                        if (myController.text.isEmpty) {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const AlertDialog(
+                                content:
+                                    Text("Debes ingresar una patente o CUIT"),
+                              );
+                            },
+                          );
+                        } else {
+                          final String patenteCUIT = myController.text;
+                          final String nroCell = nroCel.text;
+                          // Guardar en SharedPreferences
+                          final prefs = await SharedPreferences.getInstance();
+                          await prefs.setString('patenteCUIT', patenteCUIT);
+                          await prefs.setString('nroCell', nroCell);
+                          Navigator.pushNamed(
+                            context,
+                            "/home",
+                          );
+                        }
+                      },
+                      child: const Text("Buscar"),
+                    ),
                   ),
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Container(
-                  padding: const EdgeInsets.only(top: 0, bottom: 0, left: 10),
-                  child: const Text(
-                    "Estamos en:",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
+              FractionallySizedBox(
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 0, bottom: 0, left: 10),
+                    child: const Text(
+                      "Estamos en:",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15),
+                    ),
                   ),
                 ),
               ),
               // Expanded para mostrar la lista de puertos
-              Expanded(
+              FractionallySizedBox(
                 child: FutureBuilder<List<Album>>(
                   future: futureAlbum,
                   builder: (context, snapshot) {
@@ -292,7 +297,7 @@ class _Inicio extends State<Inicio> with SingleTickerProviderStateMixin {
             ],
           ),
         ),
-      )
+      ),
     ]);
   }
 }
