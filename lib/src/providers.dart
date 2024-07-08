@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class MensajesArguments {
   final List<String> title;
@@ -16,10 +17,27 @@ class PushNotProv {
   final _mensajeStreamControll =
       StreamController<List<MensajesArguments>>.broadcast();
   Stream<List<MensajesArguments>> get mensajes => _mensajeStreamControll.stream;
+// TEST SOUND
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
 
   PushNotProv() {
     _loadStoredMessages(); // Cargar mensajes almacenados al iniciar
+    _initializeNotifications(); //TEST SOUND
   }
+
+// TEST SOUND
+  Future<void> _initializeNotifications() async {
+    var initializationSettingsAndroid =
+        const AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initializationSettingsIOS =
+        const DarwinInitializationSettings(); // iOS initialization settings
+    var initializationSettings = InitializationSettings(
+        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  }
+//TEST SOUND FINISH
+
   Future<void> _loadStoredMessages() async {
     final prefs = await SharedPreferences.getInstance();
     final storedTitles = prefs.getStringList('m') ?? [];
@@ -76,6 +94,8 @@ class PushNotProv {
         final prefs = await SharedPreferences.getInstance();
         await prefs.setStringList('m', accumulatedTitles);
         await prefs.setStringList('mb', accumulatedBodies);
+        // Mostrar una notificación local con sonido
+        _showNotification(message);
       }
     });
 
@@ -93,6 +113,7 @@ class PushNotProv {
 
         // Añade el mensaje al stream
         _mensajeStreamControll.add(mensajesList);
+        // Acumula los nuevos títulos y cuerpos
         List<String> accumulatedTitles = [];
         List<String> accumulatedBodies = [];
         for (var e in mensajesList) {
@@ -125,6 +146,7 @@ class PushNotProv {
 
       // Añade el mensaje al stream
       _mensajeStreamControll.add(mensajesList);
+      // Acumula los nuevos títulos y cuerpos
       List<String> accumulatedTitles = [];
       List<String> accumulatedBodies = [];
       for (var e in mensajesList) {
@@ -137,6 +159,24 @@ class PushNotProv {
       await prefs.setStringList('m', accumulatedTitles);
       await prefs.setStringList('mb', accumulatedBodies);
     }
+  }
+
+  // SOUND TEST
+  Future<void> _showNotification(RemoteMessage message) async {
+    var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
+        'channel id 8', 'your_channel_name',
+        channelDescription: 'your_channel_description',
+        importance: Importance.max,
+        priority: Priority.high,
+        sound: RawResourceAndroidNotificationSound('notification'));
+    var iOSPlatformChannelSpecifics =
+        const DarwinNotificationDetails(); // iOS notification details
+    var platformChannelSpecifics = NotificationDetails(
+        android: androidPlatformChannelSpecifics,
+        iOS: iOSPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.show(0, message.notification?.title,
+        message.notification?.body, platformChannelSpecifics,
+        payload: 'item x');
   }
 
   dispose() {

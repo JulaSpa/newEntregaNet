@@ -203,22 +203,50 @@ class _MyHomePageState extends State<MyHomePage> {
                           itemCount: albums.length,
                           itemBuilder: (context, index) {
                             final album = albums[index];
+                            final situacionLowercase =
+                                album.situacion.toLowerCase();
+                            Color backgroundColor =
+                                Color.fromARGB(255, 20, 81, 151);
+                            if (situacionLowercase == 'rechazo' ||
+                                situacionLowercase == 'desviado' ||
+                                situacionLowercase == 'demorado') {
+                              backgroundColor = Colors.red;
+                            } else if (situacionLowercase == 'autorizado' ||
+                                situacionLowercase == 'aceptado' ||
+                                situacionLowercase == 'descargado') {
+                              backgroundColor = Colors.green;
+                            }
                             return Card(
                               color: Colors.black.withOpacity(0.5),
                               margin: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 20),
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  ListTile(
-                                    title: Text(
-                                      album.entregador,
-                                      style: const TextStyle(
-                                        fontSize: 25,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
+                                  album.logourl.isNotEmpty
+                                      ? SizedBox(
+                                          width: double.infinity,
+                                          child: Image.network(
+                                            album.logourl,
+                                            fit: BoxFit.cover,
+                                            errorBuilder:
+                                                (context, error, stackTrace) {
+                                              return Text(
+                                                album.entregador,
+                                                style: const TextStyle(
+                                                  fontSize: 25,
+                                                  color: Colors.white,
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        )
+                                      : Text(
+                                          album.entregador,
+                                          style: const TextStyle(
+                                            fontSize: 25,
+                                            color: Colors.white,
+                                          ),
+                                        ),
                                   Padding(
                                     padding: const EdgeInsets.all(15.0),
                                     child: Column(
@@ -239,6 +267,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     style: TextStyle(
                                                       fontSize: 17,
                                                       color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                   const SizedBox(height: 5),
@@ -262,6 +292,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     style: TextStyle(
                                                       fontSize: 17,
                                                       color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                   const SizedBox(height: 5),
@@ -292,6 +324,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     style: TextStyle(
                                                       fontSize: 17,
                                                       color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                   const SizedBox(height: 5),
@@ -315,6 +349,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     style: TextStyle(
                                                       fontSize: 17,
                                                       color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                   const SizedBox(height: 5),
@@ -345,6 +381,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     style: TextStyle(
                                                       fontSize: 17,
                                                       color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                   const SizedBox(height: 5),
@@ -368,6 +406,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     style: TextStyle(
                                                       fontSize: 17,
                                                       color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                   const SizedBox(height: 5),
@@ -384,26 +424,31 @@ class _MyHomePageState extends State<MyHomePage> {
                                           ],
                                         ),
                                         const SizedBox(height: 15),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const Text(
-                                              "Situación:",
-                                              style: TextStyle(
-                                                fontSize: 17,
-                                                color: Colors.white,
+                                        Container(
+                                          color: backgroundColor,
+                                          width: double.infinity,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              const Text(
+                                                "Situación:",
+                                                style: TextStyle(
+                                                  fontSize: 17,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                               ),
-                                            ),
-                                            const SizedBox(height: 5),
-                                            Text(
-                                              album.situacion,
-                                              style: const TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.white,
+                                              const SizedBox(height: 5),
+                                              Text(
+                                                album.situacion,
+                                                style: const TextStyle(
+                                                  fontSize: 15,
+                                                  color: Colors.white,
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                         const SizedBox(height: 15),
                                         Column(
@@ -415,6 +460,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                               style: TextStyle(
                                                 fontSize: 17,
                                                 color: Colors.white,
+                                                fontWeight: FontWeight.bold,
                                               ),
                                             ),
                                             const SizedBox(height: 5),

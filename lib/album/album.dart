@@ -8,18 +8,19 @@ class Album {
   final String producto;
   final String situacion;
   final String analisis;
+  final String logourl;
 
-  const Album({
-    required this.entregador,
-    required this.nrocp,
-    required this.turno,
-    required this.puerto,
-    required this.titular,
-    required this.chasis,
-    required this.producto,
-    required this.situacion,
-    required this.analisis,
-  });
+  const Album(
+      {required this.entregador,
+      required this.nrocp,
+      required this.turno,
+      required this.puerto,
+      required this.titular,
+      required this.chasis,
+      required this.producto,
+      required this.situacion,
+      required this.analisis,
+      required this.logourl});
 
   factory Album.fromJson(Map<String, dynamic> json) {
     return Album(
@@ -32,6 +33,7 @@ class Album {
       producto: json["producto"] ?? '',
       situacion: json["situacion"] ?? '',
       analisis: json["analisis"] ?? '',
+      logourl: json["logourl"] ?? '',
     );
   }
 }

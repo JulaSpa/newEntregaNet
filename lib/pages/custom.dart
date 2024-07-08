@@ -54,6 +54,7 @@ class _CustomScaffoldState extends State<CustomScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black.withOpacity(0.5),
+      resizeToAvoidBottomInset: false,
       appBar: widget.appBar,
       body: widget.body,
       floatingActionButton: Stack(

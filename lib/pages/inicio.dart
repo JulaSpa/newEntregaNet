@@ -137,29 +137,26 @@ class _Inicio extends State<Inicio> with SingleTickerProviderStateMixin {
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FractionallySizedBox(
-                child: Container(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 130),
-                  constraints: const BoxConstraints(
-                    minWidth:
-                        0, // Ajusta la altura mínima según tus necesidades
-                  ),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "ENTREGANET",
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 252, 250, 250),
-                          fontSize: 25,
-                        ),
+              Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 130),
+                constraints: const BoxConstraints(
+                  minWidth: 0, // Ajusta la altura mínima según tus necesidades
+                ),
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "ENTREGANET",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 252, 250, 250),
+                        fontSize: 25,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
+
               FractionallySizedBox(
                 widthFactor: 0.5,
                 child: Container(
@@ -205,7 +202,7 @@ class _Inicio extends State<Inicio> with SingleTickerProviderStateMixin {
               ),
               FractionallySizedBox(
                 child: Container(
-                  padding: const EdgeInsets.only(top: 90, bottom: 15),
+                  padding: const EdgeInsets.only(top: 50, bottom: 15),
                   child: SizedBox(
                     width: 100,
                     height: 50,
@@ -241,11 +238,12 @@ class _Inicio extends State<Inicio> with SingleTickerProviderStateMixin {
                   ),
                 ),
               ),
-              FractionallySizedBox(
+              Expanded(
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Container(
-                    padding: const EdgeInsets.only(top: 0, bottom: 0, left: 10),
+                    padding:
+                        const EdgeInsets.only(top: 0, bottom: 10, left: 10),
                     child: const Text(
                       "Estamos en:",
                       style: TextStyle(
@@ -256,8 +254,10 @@ class _Inicio extends State<Inicio> with SingleTickerProviderStateMixin {
                   ),
                 ),
               ),
+
               // Expanded para mostrar la lista de puertos
-              FractionallySizedBox(
+              Container(
+                padding: const EdgeInsets.only(top: 0, bottom: 20, left: 0),
                 child: FutureBuilder<List<Album>>(
                   future: futureAlbum,
                   builder: (context, snapshot) {
