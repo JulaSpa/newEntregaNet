@@ -22,11 +22,13 @@ class _Inicio extends State<Inicio> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late PushNotProv pushNotProv;
   bool firebaseInitialized = false;
-
+  String? patente;
+  String? celu;
   @override
   void initState() {
     super.initState();
     loadAlbumData();
+    loadStoredData();
     _scrollController = ScrollController();
     _animationController = AnimationController(
       vsync: this,
@@ -55,11 +57,27 @@ class _Inicio extends State<Inicio> with SingleTickerProviderStateMixin {
   }
 
   void loadAlbumData() {
-    futureAlbum = fetchAlbum().then((result) {
+    futureAlbum = fetchAlbum().then((result) async {
       return result;
     }).catchError((error) {
       print("Error fetching album: $error");
       return <Album>[]; // Devuelve una lista vacía en caso de error.
+    });
+  }
+
+  void loadStoredData() async {
+    final prefs = await SharedPreferences.getInstance();
+    final storedPatente = prefs.getString('patenteCUIT');
+    final storedCelu = prefs.getString('nroCell');
+
+    // Actualiza el texto del controlador si existe el valor almacenado
+    setState(() {
+      if (storedPatente != null) {
+        myController.text = storedPatente; // Muestra la patente guardada
+      }
+      if (storedCelu != null) {
+        nroCel.text = storedCelu; // Muestra el número guardado
+      }
     });
   }
 
